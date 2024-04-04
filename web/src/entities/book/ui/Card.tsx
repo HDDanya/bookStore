@@ -25,17 +25,15 @@ export const BookSingleCard: React.FC<Book> = ({
       cover={<img alt={name} src={image} />}>
       <Meta title={name} description={`${year}, ${genre}, ${author} `} />
 
-      <p>
-        {user.id === user_id && Edit && Delete ? (
-          <>
-            <Space style={{ marginTop: '1rem' }}>
-              <Edit {...book} /> <Delete {...book} />
-            </Space>
-          </>
-        ) : (
-          'nothing'
-        )}
-      </p>
+      {user.id === user_id && Edit && Delete ? (
+        <Space style={{ marginTop: '2rem' }}>
+          <Edit {...book} />
+
+          <Delete {...book} />
+        </Space>
+      ) : (
+        ''
+      )}
     </Card>
   );
 };
