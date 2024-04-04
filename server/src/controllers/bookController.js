@@ -15,6 +15,10 @@ class BookController {
   }
   async create(req, res, next) {
     try {
+      const checkArr = Object.values(req.body);
+      checkArr.slice(2).map((el) => {
+        if (el === '') throw ApiError.BadRequest('Заполните все поля');
+      });
       const authHeader = req.headers.authorization;
       const accessToken = authHeader.split(' ')[1];
       const userData = tokenService.validateAccessToken(accessToken);
@@ -26,7 +30,7 @@ class BookController {
       return res.json(book);
     } catch (error) {
       console.log(error);
-      next(ApiError.BadRequest('что то пошло не так'));
+      next(ApiError.BadRequest('Заполните все поля'));
     }
   }
   async edit(req, res, next) {
@@ -42,7 +46,7 @@ class BookController {
     const { id } = req.body;
     const book = await Book.findOne({ where: { id: id } });
     await book.destroy();
-    return res.json(book)
+    return res.json(book);
   }
 }
 module.exports = new BookController();
