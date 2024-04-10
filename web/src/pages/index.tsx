@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-// const MainPage = lazy(() => import('./Main'));
 import { Public } from './Public';
 import { LayoutApp } from './Layout';
 import { RequireAuth } from 'features/auth';

@@ -3,7 +3,7 @@ import { Card, Space } from 'antd';
 import { Book } from 'shared/types';
 import { selectCurrentUser } from 'entities/auth';
 import { useAppSelector } from 'shared/hooks';
-import { buttonsContext } from 'widgets/BookWidget';
+import { buttonsContext } from 'widgets/bookWidget';
 export const BookSingleCard: React.FC<Book> = ({
   id,
   user_id,

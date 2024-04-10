@@ -1,3 +1,3 @@
-export * from './ui/Card';
-export * from './model/bookSlice';
+export * from './ui';
+export * from './model';
 export * from './api/index';

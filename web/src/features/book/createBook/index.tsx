@@ -45,7 +45,7 @@ export const CreateBookPopUp = () => {
   return (
     <>
       <Button type="link" onClick={showModal}>
-        СОЗДАТЬ
+        CREATE
       </Button>
       <Modal
         open={isModalOpen}
@@ -53,8 +53,8 @@ export const CreateBookPopUp = () => {
           handleSubmit(e);
           form.resetFields();
         }}
-        okText="Отправить"
-        cancelText="Отмена"
+        okText="Send"
+        cancelText="Cancel"
         onCancel={handleCancel}>
         <Form
           form={form}

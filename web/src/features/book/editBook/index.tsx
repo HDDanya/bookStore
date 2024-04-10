@@ -3,7 +3,7 @@ import { ErrorHandler } from 'shared/lib';
 import { Button, Form, Input, Modal, Alert } from 'antd';
 import { useEditeBookMutation } from 'entities/book';
 import { Book } from 'shared/types';
-export const EditeBookPopUp: React.FC<Book> = ({ ...Props }) => {
+export const EditBookPopUp: React.FC<Book> = ({ ...Props }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [book, setBook] = React.useState<Book>(Props);
   const [errMsg, setErrMsg] = React.useState<string>('');
@@ -22,8 +22,7 @@ export const EditeBookPopUp: React.FC<Book> = ({ ...Props }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const editedBook = await editeBook(book).unwrap();
-      console.log(editedBook);
+      await editeBook(book).unwrap();
     } catch (err) {
       ErrorHandler(err, setErrMsg);
     }
@@ -31,12 +30,12 @@ export const EditeBookPopUp: React.FC<Book> = ({ ...Props }) => {
 
   return (
     <>
-      <Button onClick={showModal}>Редактивровать</Button>
+      <Button onClick={showModal}>Edit</Button>
       <Modal
         open={isModalOpen}
         onOk={handleSubmit}
-        okText="Редактивровать"
-        cancelText="Отмена"
+        okText="Edit"
+        cancelText="Cancel"
         onCancel={handleCancel}>
         <Form
           initialValues={book}

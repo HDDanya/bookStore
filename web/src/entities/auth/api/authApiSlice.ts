@@ -1,4 +1,4 @@
-import { apiSlice } from './apiSlice';
+import { apiSlice } from 'shared/api';
 import { AuthResponce } from '../lib';
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({

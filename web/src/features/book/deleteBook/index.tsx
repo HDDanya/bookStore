@@ -14,7 +14,7 @@ export const DeleteBook: React.FC<Book> = ({ ...props }) => {
   };
   return (
     <Button onClick={handleSubmit} danger>
-      Удалить
+      Delete
     </Button>
   );
 };

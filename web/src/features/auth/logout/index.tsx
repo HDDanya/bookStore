@@ -15,7 +15,7 @@ export const LogOut = () => {
   };
   return (
     <Button type="link" onClick={handleSubmit}>
-      ВЫЙТИ
+      LOGOUT
     </Button>
   );
 };

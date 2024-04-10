@@ -4,7 +4,7 @@ class BookService {
   async create({ user_id, name, year, genre, author, image }) {
     const book = await Book.findOne({ where: { name } });
     if (book) {
-      throw ApiError.BadRequest('Книга уже существует');
+      throw ApiError.BadRequest('Book already exists');
     }
     const newBook = await Book.create({
       user_id,
@@ -26,6 +26,5 @@ class BookService {
     await book.save();
     return book;
   }
-
 }
 module.exports = new BookService();

@@ -36,7 +36,7 @@ export const Registration = () => {
 
   return (
     <AuthPopUp
-      text="Регистрация"
+      text="Registration"
       email={email}
       password={password}
       errMsg={errMsg}

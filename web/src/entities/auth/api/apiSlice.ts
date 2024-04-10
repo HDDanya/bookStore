@@ -2,27 +2,13 @@ import {
   BaseQueryFn,
   FetchArgs,
   FetchBaseQueryError,
-  createApi,
-  fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react';
+import { baseQuery } from 'shared/api';
 import { setCredentials, logOut } from 'entities/auth';
 import { Mutex } from 'async-mutex';
 import { AuthResponce } from '../lib';
-import type { RootState } from 'app/store';
 
 const mutex = new Mutex();
-
-const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3100/api',
-  credentials: 'include',
-  prepareHeaders(headers, { getState }) {
-    const token = (getState() as RootState).auth.token;
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    }
-    return headers;
-  },
-});
 const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -31,7 +17,6 @@ const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && result.error.status === 401) {
-    console.log('sending tokens');
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
       try {
@@ -56,9 +41,4 @@ const baseQueryWithReauth: BaseQueryFn<
   }
   return result;
 };
-
-export const apiSlice = createApi({
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ['Book'],
-  endpoints: () => ({}),
-});
+export default baseQueryWithReauth;

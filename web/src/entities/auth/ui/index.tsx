@@ -46,8 +46,8 @@ export const AuthPopUp: React.FC<AuthModalProps> = ({
         title={text}
         open={isModalOpen}
         onOk={handleSubmit}
-        okText="Отправить"
-        cancelText="Отмена"
+        okText="Send"
+        cancelText="Cancel"
         onCancel={handleCancel}>
         <Form
           name={text}

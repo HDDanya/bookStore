@@ -1,4 +1,4 @@
-export * from './model/authSlice';
+export * from './model';
 export * from './api/authApiSlice';
 export * from './api/apiSlice';
 export * from './lib/index';

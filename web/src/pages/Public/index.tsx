@@ -11,7 +11,7 @@ export const Public = () => {
         justify="center"
         align="center"
         vertical>
-        <Title level={4}>ДОБРО ПОЖАЛОВАТЬ</Title>
+        <Title level={4}>WELCOME</Title>
         <Space style={{ height: '40px', gap: '1rem' }}>
           <Registration />
           <Login />

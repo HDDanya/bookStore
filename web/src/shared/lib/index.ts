@@ -4,8 +4,6 @@ export function ErrorHandler(
   setErrMsg: React.Dispatch<React.SetStateAction<string>>
 ) {
   if (!(err as ErrorReponce).data) {
-    console.log(err);
-
     setErrMsg('No Server Response');
   } else if ((err as ErrorReponce).status === 400) {
     setErrMsg((err as ErrorReponce)?.data?.messege);

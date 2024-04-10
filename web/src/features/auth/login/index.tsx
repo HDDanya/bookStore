@@ -36,7 +36,7 @@ export const Login = () => {
 
   return (
     <AuthPopUp
-      text="Вход"
+      text="Login"
       email={email}
       password={password}
       errMsg={errMsg}

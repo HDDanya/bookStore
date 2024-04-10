@@ -9,7 +9,7 @@ class UserService {
   async regestartion(email, password) {
     const checkUser = await User.findOne({ where: { name: email } });
     if (checkUser) {
-      throw ApiError.BadRequest('Пользователь уже существует');
+      throw ApiError.BadRequest('User already exists');
     }
     const hashedPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
@@ -26,23 +26,15 @@ class UserService {
       user: userDto,
     };
   }
-  async activate(activationLink) {
-    const user = await User.findOne({ where: { activationLink } });
-    if (!user) {
-      throw ApiError.BadRequest('Неккоректная ссылка активации');
-    }
-    user.isActivated = true;
-    await user.save();
-  }
 
   async login(email, password) {
     const user = await User.findOne({ where: { name: email } });
     if (!user) {
-      throw ApiError.BadRequest('Пользователь с таким email не найден');
+      throw ApiError.BadRequest('User with this email not found');
     }
     const checkPassword = await bcrypt.compare(password, user.password);
     if (!checkPassword) {
-      throw ApiError.BadRequest('Неверный логин или пароль');
+      throw ApiError.BadRequest('Incorrect email or password');
     }
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });

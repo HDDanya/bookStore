@@ -1,4 +1,4 @@
-import { apiSlice } from 'entities/auth';
+import { apiSlice } from 'shared/api';
 import { Book } from 'shared/types';
 export const bookApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({

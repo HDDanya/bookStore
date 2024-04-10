@@ -10,14 +10,14 @@ class BookController {
       return res.json(books);
     } catch (error) {
       console.log(error);
-      next(ApiError.BadRequest('что то пошло не так'));
+      next(ApiError.BadRequest('Something went wrong'));
     }
   }
   async create(req, res, next) {
     try {
       const checkArr = Object.values(req.body);
       checkArr.slice(2).map((el) => {
-        if (el === '') throw ApiError.BadRequest('Заполните все поля');
+        if (el === '') throw ApiError.BadRequest('Fill in the blanks');
       });
       const authHeader = req.headers.authorization;
       const accessToken = authHeader.split(' ')[1];
@@ -30,7 +30,7 @@ class BookController {
       return res.json(book);
     } catch (error) {
       console.log(error);
-      next(ApiError.BadRequest('Заполните все поля'));
+      next(ApiError.BadRequest('Fill in the blanks'));
     }
   }
   async edit(req, res, next) {
@@ -39,7 +39,7 @@ class BookController {
       return res.json(book);
     } catch (error) {
       console.log(error);
-      next(ApiError.BadRequest('что то пошло не так'));
+      next(ApiError.BadRequest('Something went wrong'));
     }
   }
   async delete(req, res, next) {

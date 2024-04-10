@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { apiSlice, authReducer } from 'entities/auth';
+import { authReducer } from 'entities/auth';
+import { apiSlice } from 'shared/api';
 import { bookReducer } from 'entities/book';
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
