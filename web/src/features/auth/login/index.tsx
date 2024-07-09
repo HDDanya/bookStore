@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from 'shared/hooks';
-import { setCredentials } from 'entities/auth';
-import { useLoginMutation } from 'entities/auth';
-import { AuthPopUp } from 'entities/auth';
+import { setCredentials, useLoginMutation, AuthPopUp } from 'entities/auth';
 import { ErrorHandler } from 'shared/lib';
 export const Login = () => {
   const [email, setEmail] = React.useState<string>('');

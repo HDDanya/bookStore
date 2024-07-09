@@ -22,19 +22,32 @@ export const bookApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Book'],
     }),
-    deleteBook: build.mutation<Book, Book>({
+    deleteBook: build.mutation<number, Book>({
       query: (book) => ({
         url: `/book/delete/${book.id}`,
+        method: 'POST',
+      }),
+      invalidatesTags: ['Book'],
+    }),
+    addToBasket: build.mutation<Book[], Book>({
+      query: (book) => ({
+        url: `/book/basket/${book.id}`,
         method: 'POST',
         body: { ...book },
       }),
       invalidatesTags: ['Book'],
+    }),
+    getBasket: build.query<Book[], void>({
+      query: () => '/user/basket',
+      providesTags: (result) => ['Book'],
     }),
   }),
 });
 export const {
   useCreateBookMutation,
   useGetBooksQuery,
+  useGetBasketQuery,
   useEditeBookMutation,
   useDeleteBookMutation,
+  useAddToBasketMutation,
 } = bookApiSlice;

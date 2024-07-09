@@ -4,7 +4,9 @@ import { Public } from './Public';
 import { LayoutApp } from './Layout';
 import { RequireAuth } from 'features/auth';
 
+
 const BookPage = lazy(() => import('./Books'));
+const  BasketPage  = lazy(() => import('./Basket'));
 export const Routing = () => {
   return (
     <Routes>
@@ -12,6 +14,7 @@ export const Routing = () => {
         <Route index element={<Public />} />
         <Route element={<RequireAuth />}>
           <Route path="books" element={<BookPage />} />
+          <Route path="basket" element={<BasketPage />} />
         </Route>
       </Route>
     </Routes>

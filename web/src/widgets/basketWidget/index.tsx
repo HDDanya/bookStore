@@ -1,16 +1,15 @@
 import { Alert, Space, Spin } from 'antd';
-import { useGetBooksQuery } from 'entities/book';
+import { useGetBasketQuery } from 'entities/book';
 import { BookSingleCard } from 'entities/book';
 
-export const BookCards = () => {
+export const BasketWidget = () => {
   const {
     data: books,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetBooksQuery();
-
+  } = useGetBasketQuery();
   let content;
   if (isLoading) {
     content = <Spin />;

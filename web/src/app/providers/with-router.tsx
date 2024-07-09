@@ -7,4 +7,3 @@ export const withRouter = (component: () => React.ReactNode) => () =>
       <Suspense fallback="Loading...">{component()}</Suspense>
     </BrowserRouter>
   );
-
