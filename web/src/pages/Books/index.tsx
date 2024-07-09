@@ -1,7 +1,7 @@
-import React from 'react';
-import { BookWidget } from 'widgets/bookWidget';
+import { BookCards } from 'features/book';
+
 
 const BookPage = () => {
-  return <BookWidget />;
+  return <BookCards />;
 };
 export default BookPage;

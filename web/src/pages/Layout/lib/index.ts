@@ -1,17 +1,13 @@
 export const layoutStyle = {
-  borderRadius: 8,
   overflow: 'hidden',
-  width: 'calc(50% - 8px)',
-  maxWidth: 'calc(50% - 8px)',
+  width: '100%',
   height: '100vh',
 };
 export const headerStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'start',
+  padding: 0,
   textAlign: 'center',
   color: '#fff',
   height: 64,
-  paddingInline: 48,
   lineHeight: '64px',
 };
 

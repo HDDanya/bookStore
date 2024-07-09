@@ -1,4 +1,4 @@
-const { User, Book } = require('../../db/models');
+const { Basket, Book } = require('../../db/models');
 const ApiError = require('../exceptionsS/api-error');
 class BookService {
   async create({ user_id, name, year, genre, author, image }) {
@@ -14,17 +14,25 @@ class BookService {
       author,
       image,
     });
+
     return newBook;
   }
-  async edite({ id, name, year, author, genre, image }) {
-    const book = await Book.findOne({ where: { id: id } });
-    book.name = name;
-    book.year = year;
-    book.author = author;
-    book.genre = genre;
-    book.image = image;
+  async edite(props) {
+    const book = await Book.findOne({ where: { id: props.id } });
+    book.name = props.name;
+    book.year = props.year;
+    book.author = props.author;
+    book.genre = props.genre;
+    book.image = props.image;
     await book.save();
+
     return book;
+  }
+  async delete(user_id, book_id) {
+    const book = await Book.findOne({ where: { id: book_id } });
+    await book.destroy();
+    const userBasket = await Basket.findAll({ raw: true, where: { user_id } });
+    return userBasket;
   }
 }
 module.exports = new BookService();
